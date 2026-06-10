@@ -3,6 +3,7 @@ import {Heading} from "@/components/ui/Heading";
 import {SearchField} from "@/components/ui/search-field/SearchField";
 import dynamic from "next/dynamic";
 import {ProjectStats} from "@/app/dashboard/project-stats/ProjectStats";
+import {ProjectStatisticsChart} from "@/app/dashboard/project-chart/ProjectStatisticsChart";
 
 const DynamicThemeToggle = dynamic(
   () =>
@@ -27,7 +28,7 @@ export function Dashboard() {
         </div>
         <div className={"grid grid-cols-[25%_75%] gap-6"}>
           <ProjectStats />
-          <div>CHART</div>
+          <ProjectStatisticsChart />
         </div>
       </div>
       <div className={'p-5 bg-violet-200 ml-5 h-screen flex items-center justify-center text-center text-neutral-900'}>CHAT</div>
