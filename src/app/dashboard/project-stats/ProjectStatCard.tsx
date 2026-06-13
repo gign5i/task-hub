@@ -11,7 +11,7 @@ export function ProjectStatCard({ projectStat }: Props) {
     <div
       className={clsx(
         projectStat.bgColor,
-        "rounded-2xl p-5 relative overflow-hidden shadow-md",
+        "rounded-2xl p-5 relative overflow-hidden shadow-md items-center h-full",
       )}
     >
       <div className={"flex items-center justify-between relative z-10"}>

@@ -7,7 +7,7 @@ export interface ISubTask {
   isCompleted: boolean;
 }
 
-export interface ITask extends ISubTask {
+export interface ITask extends Omit<ISubTask, 'isCompleted'> {
   icon: LucideIcon,
   deuDate: Date,
   users: Array<IProfile>,

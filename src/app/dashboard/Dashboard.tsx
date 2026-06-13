@@ -4,6 +4,7 @@ import {SearchField} from "@/components/ui/search-field/SearchField";
 import dynamic from "next/dynamic";
 import {ProjectStats} from "@/app/dashboard/project-stats/ProjectStats";
 import {ProjectStatisticsChart} from "@/app/dashboard/project-chart/ProjectStatisticsChart";
+import {LastTasks} from "@/components/ui/Tasks/LastTasks";
 
 const DynamicThemeToggle = dynamic(
   () =>
@@ -30,8 +31,9 @@ export function Dashboard() {
           <ProjectStats />
           <ProjectStatisticsChart />
         </div>
+        <LastTasks />
       </div>
-      <div className={'p-5 bg-violet-200 ml-5 h-screen flex items-center justify-center text-center text-neutral-900'}>CHAT</div>
+      <div className={'p-5 bg-violet-200 ml-15 flex items-center justify-center text-center text-neutral-900'}>CHAT</div>
     </div>
   );
 }
