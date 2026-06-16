@@ -1,36 +1,51 @@
-import type {Metadata} from "next";
-import {Poppins} from "next/font/google";
-import "./globals.css";
-import Providers from "@/app/Providers";
+import "./globals.css"
+import type { Metadata } from "next"
+import { Geist, Poppins } from "next/font/google"
+
+import Providers from "@/app/Providers"
+
+import { cn } from "@/utils/lib/utils"
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'})
 
 const font = Poppins({
-  variable: "--font-poppins-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "600", "700", "800"],
-});
+	variable: "--font-poppins-sans",
+	subsets: ["latin"],
+	weight: ["300", "400", "600", "700", "800"]
+})
 
 export const metadata: Metadata = {
-  icons: {
-    icon: "/images/favicon-logo.svg",
-    shortcut: "/images/favicon-logo.svg",
-  },
-  title: {
-    absolute: "Task Hub",
-    template: "%s | Task Hub",
-  },
-  description: "task managment",
-};
+	icons: {
+		icon: "/images/favicon-logo.svg",
+		shortcut: "/images/favicon-logo.svg"
+	},
+	title: {
+		absolute: "Task Hub",
+		template: "%s | Task Hub"
+	},
+	description: "task managment"
+}
 
 export default function RootLayout({
-  children,
+	children
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode
 }>) {
-  return (
-    <html lang="en" className={`${font.variable}  h-full antialiased`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col">
-        <Providers>{children}</Providers>
-      </body>
-    </html>
-  );
+	return (
+		<html
+			lang="en"
+			className={cn(
+				"h-full",
+				"antialiased",
+				font.variable,
+				"font-sans",
+				geist.variable
+			)}
+			suppressHydrationWarning
+		>
+			<body className="flex min-h-full flex-col">
+				<Providers>{children}</Providers>
+			</body>
+		</html>
+	)
 }
