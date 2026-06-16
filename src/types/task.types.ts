@@ -19,3 +19,5 @@ export interface ITask extends Omit<ISubTask, "isCompleted"> {
 }
 
 export type TTaskType = "all" | "not-started" | "in-progress" | "completed"
+
+export type TSortType = "asc" | "desc"

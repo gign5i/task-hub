@@ -3,38 +3,51 @@ import { TASKS } from "@/MOCKS/tasks.data"
 import { useMemo, useState } from "react"
 
 import { TaskPreview } from "@/components/ui/Tasks/TaskPreview"
-import {
-	Select,
-	SelectContent,
-	SelectGroup,
-	SelectItem,
-	SelectLabel,
-	SelectTrigger,
-	SelectValue
-} from "@/components/ui/select"
+import { FilterByStatus } from "@/components/ui/filters/FilterByStatus"
+import { SortByDueDate } from "@/components/ui/filters/SortByDueDate"
 
-import type { ITask, TTaskType } from "@/types/task.types"
-
-import { StatusConfig } from "@/config/select-options.config"
+import type { ITask, TSortType, TTaskType } from "@/types/task.types"
 
 export function LastTasks() {
 	const [taskType, setTaskType] = useState<TTaskType | null>(null)
+	const [sortByDueDate, setSortByDueDate] = useState<TSortType>("asc")
 
 	const FILTERED_BY_STATUS = useMemo(() => {
-		switch (taskType) {
-			case "not-started":
-			case "in-progress":
-				return TASKS.filter(task =>
-					task.subTasks.some(subTask => !subTask.isCompleted)
-				)
-			case "completed":
-				return TASKS.filter(task =>
-					task.subTasks.some(subTask => subTask.isCompleted)
-				)
-			default:
-				return TASKS
-		}
-	}, [taskType])
+		const filtered = !taskType
+			? TASKS
+			: TASKS.filter(task => {
+					switch (taskType) {
+						case "not-started":
+							return task.subTasks.every(subTask => !subTask.isCompleted)
+
+						case "in-progress":
+							return task.subTasks.some(subTask => !subTask.isCompleted)
+
+						case "completed":
+							return task.subTasks.every(subTask => subTask.isCompleted)
+						default:
+							return true
+					}
+				})
+
+		const sortedTasks = filtered.sort((a, b) => {
+			const dateA = new Date(a.deuDate).getDate()
+			const dateB = new Date(b.deuDate).getDate()
+
+			// console.log("dateA: ", dateA)
+			// console.log("dateB: ", dateB)
+
+			if (sortByDueDate === "asc") {
+				return dateA - dateB
+			} else {
+				return dateB - dateA
+			}
+		})
+
+		console.log("sortedTasks: ", sortedTasks)
+
+		return sortedTasks
+	}, [taskType, sortByDueDate])
 
 	return (
 		<div className={"mt-6"}>
@@ -45,30 +58,16 @@ export function LastTasks() {
 						({FILTERED_BY_STATUS.length})
 					</span>
 				</h2>
-				<Select
-					items={StatusConfig}
-					highlightItemOnHover={false}
-					value={taskType === null ? "all" : taskType}
-					onValueChange={value => setTaskType(value === "all" ? null : value)}
-				>
-					<SelectTrigger className="w-full max-w-48 bg-white">
-						<SelectValue placeholder="All" />
-					</SelectTrigger>
-					<SelectContent>
-						<SelectGroup>
-							<SelectLabel>Statuses</SelectLabel>
-							{StatusConfig.map(configItm => (
-								<SelectItem
-									className={`hover:text-primary select-none:text-primary hover:bg-white ${taskType === configItm.value && "text-primary"}`}
-									key={`config-${configItm.value}`}
-									value={configItm.value}
-								>
-									{configItm.label}
-								</SelectItem>
-							))}
-						</SelectGroup>
-					</SelectContent>
-				</Select>
+				<div className={"flex w-[400px] justify-end gap-1.5"}>
+					<FilterByStatus
+						taskType={taskType}
+						setTaskType={setTaskType}
+					/>
+					<SortByDueDate
+						sortByDueDate={sortByDueDate}
+						setSortByDueDate={setSortByDueDate}
+					/>
+				</div>
 			</div>
 			<div className={"mt-3 flex w-full items-center justify-center gap-4"}>
 				{!!FILTERED_BY_STATUS.length ? (
