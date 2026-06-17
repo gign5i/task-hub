@@ -1,6 +1,8 @@
 import { CheckCircle } from "lucide-react"
 import { useMemo } from "react"
 
+import { cn } from "@/utils/lib/utils"
+
 export function ProgressBar({ progress }: { progress: number }) {
 	const clamped = Math.min(100, Math.max(0, progress))
 
@@ -33,7 +35,12 @@ export function ProgressBar({ progress }: { progress: number }) {
 			className={`bg-primary/10 relative h-12 w-full overflow-hidden rounded-full`}
 		>
 			<div
-				className={`animate-stripes flex h-full items-center justify-center rounded-full bg-[length:56px_56px] font-medium text-white ${progressColor}`}
+				className={cn(
+					`flex h-full items-center justify-center rounded-full bg-[length:56px_56px] font-medium text-white ${progressColor}`,
+					{
+						"animate-stripes": clamped < 100
+					}
+				)}
 				style={{
 					width: `${clamped}%`,
 					backgroundImage:

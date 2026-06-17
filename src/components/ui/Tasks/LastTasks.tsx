@@ -34,17 +34,12 @@ export function LastTasks() {
 			const dateA = new Date(a.deuDate).getDate()
 			const dateB = new Date(b.deuDate).getDate()
 
-			// console.log("dateA: ", dateA)
-			// console.log("dateB: ", dateB)
-
 			if (sortByDueDate === "asc") {
 				return dateA - dateB
 			} else {
 				return dateB - dateA
 			}
 		})
-
-		console.log("sortedTasks: ", sortedTasks)
 
 		return sortedTasks
 	}, [taskType, sortByDueDate])

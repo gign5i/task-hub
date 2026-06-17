@@ -1,16 +1,19 @@
 "use client"
 import {
 	Image as ImageIcon,
-	Link,
+	Link as LinkIcon,
 	MessageSquareMore,
 	Pencil,
 	PlusIcon
 } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 import { ProgressBar } from "@/components/ui/ProgressBar"
 
 import type { ITask } from "@/types/task.types"
+
+import { Pages } from "@/config/pages"
 
 export function TaskPreview({ task }: { task: ITask }) {
 	const CompletedTasks = task.subTasks.filter(
@@ -76,7 +79,7 @@ export function TaskPreview({ task }: { task: ITask }) {
 							</span>
 						</div>
 						<div className={"flex items-center gap-1"}>
-							<Link
+							<LinkIcon
 								size={13}
 								className={"opacity-35"}
 							/>
@@ -93,13 +96,14 @@ export function TaskPreview({ task }: { task: ITask }) {
 						>
 							<PlusIcon size={18} />
 						</button>
-						<button
+						<Link
+							href={Pages.TASK_EDIT(task.id)}
 							className={
 								"border-primary text-primary hover:bg-primary/80 items-center rounded-full border p-1 transition-colors hover:text-white"
 							}
 						>
 							<Pencil size={18} />
-						</button>
+						</Link>
 					</div>
 				</div>
 			</div>

@@ -1,11 +1,19 @@
-import type {PropsWithChildren} from "react";
-import {Sidebar} from "@/components/layout/sidebar/Sidebar";
+import type { ReactNode } from "react"
 
-export default function DashboardLayout({children}: PropsWithChildren) {
-  return (
-    <div className={'grid grid-cols-[230px_1fr] h-screen'}>
-      <Sidebar />
-      <main className={'p-5'}>{children}</main>
-    </div>
-  )
+import { Sidebar } from "@/components/layout/sidebar/Sidebar"
+
+export default function DashboardLayout({
+	children,
+	modals
+}: {
+	children: ReactNode
+	modals: ReactNode
+}) {
+	return (
+		<div className={"grid h-screen grid-cols-[230px_1fr]"}>
+			<Sidebar />
+			<main className={"p-5"}>{children}</main>
+			{modals}
+		</div>
+	)
 }

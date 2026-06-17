@@ -6,7 +6,7 @@ import Providers from "@/app/Providers"
 
 import { cn } from "@/utils/lib/utils"
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'})
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
 const font = Poppins({
 	variable: "--font-poppins-sans",
