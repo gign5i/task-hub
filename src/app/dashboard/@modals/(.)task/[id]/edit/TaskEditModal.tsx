@@ -2,6 +2,8 @@
 
 import { useRouter } from "next/navigation"
 
+import { TaskEditor } from "@/components/ui/Forms/TaskEditor"
+
 export function TaskEditModalClient({ id }: { id: string }) {
 	const router = useRouter()
 
@@ -15,10 +17,16 @@ export function TaskEditModalClient({ id }: { id: string }) {
 			onClick={handleGetBack}
 		>
 			<div
-				className={"h-[max-content] w-[max-content] rounded-2xl bg-white p-5"}
+				className={
+					"mx-4 max-h-[90vh] w-full max-w-sm overflow-y-auto rounded-lg bg-white p-6 dark:bg-neutral-800"
+				}
 				onClick={event => event.stopPropagation()}
 			>
-				<button onClick={handleGetBack}>task edit{id}</button>
+				<button onClick={handleGetBack}>Get back</button>
+
+				<div className={"pt-2.5 pb-2.5"}>
+					<TaskEditor />
+				</div>
 			</div>
 		</div>
 	)
