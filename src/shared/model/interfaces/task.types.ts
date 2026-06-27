@@ -20,4 +20,6 @@ export interface ITask extends Omit<ISubTask, "isCompleted"> {
 
 export type TTaskType = "all" | "not-started" | "in-progress" | "completed"
 
+export type TSubTaskFormData = Pick<ISubTask, "title">
+
 export type TSortType = "asc" | "desc"
