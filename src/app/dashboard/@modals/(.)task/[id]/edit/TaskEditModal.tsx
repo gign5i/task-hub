@@ -1,10 +1,9 @@
 "use client"
 
+import { TaskEditor } from "@/widgets"
 import { useRouter } from "next/navigation"
 
-import { TaskEditor } from "@/components/ui/Forms/TaskEditor"
-
-export function TaskEditModalClient({ id }: { id: string }) {
+export const TaskEditModalClient = ({ id }: { id: string }) => {
 	const router = useRouter()
 
 	const handleGetBack = () => router.back()
@@ -25,7 +24,7 @@ export function TaskEditModalClient({ id }: { id: string }) {
 				<button onClick={handleGetBack}>Get back</button>
 
 				<div className={"pt-2.5 pb-2.5"}>
-					<TaskEditor />
+					<TaskEditor id={id} />
 				</div>
 			</div>
 		</div>

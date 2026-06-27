@@ -1,5 +1,4 @@
-import type { Dispatch, SetStateAction } from "react"
-
+import { StatusConfig, useTask } from "@/shared"
 import {
 	Select,
 	SelectContent,
@@ -8,25 +7,17 @@ import {
 	SelectLabel,
 	SelectTrigger,
 	SelectValue
-} from "@/components/ui/select"
+} from "@/shared/ui/select"
+import { observer } from "mobx-react-lite"
 
-import type { TTaskType } from "@/types/task.types"
-
-import { StatusConfig } from "@/config/select-options.config"
-
-export function FilterByStatus({
-	taskType,
-	setTaskType
-}: {
-	taskType: TTaskType | null
-	setTaskType: Dispatch<SetStateAction<TTaskType | null>>
-}) {
+export const FilterByStatus = observer(() => {
+	const { status, setTaskStatus } = useTask()
 	return (
 		<Select
 			items={StatusConfig}
 			highlightItemOnHover={false}
-			value={taskType === null ? "all" : taskType}
-			onValueChange={value => setTaskType(value === "all" ? null : value)}
+			value={status === null ? "all" : status}
+			onValueChange={value => setTaskStatus(value === "all" ? null : value)}
 		>
 			<SelectTrigger className="w-full max-w-48 bg-white">
 				<SelectValue placeholder="All" />
@@ -36,7 +27,7 @@ export function FilterByStatus({
 					<SelectLabel>Statuses</SelectLabel>
 					{StatusConfig.map(configItm => (
 						<SelectItem
-							className={`hover:text-primary select-none:text-primary hover:bg-white ${taskType === configItm.value && "text-primary"}`}
+							className={`hover:text-primary select-none:text-primary hover:bg-white ${status === configItm.value && "text-primary"}`}
 							key={`config-${configItm.value}`}
 							value={configItm.value}
 						>
@@ -47,4 +38,4 @@ export function FilterByStatus({
 			</SelectContent>
 		</Select>
 	)
-}
+})

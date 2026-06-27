@@ -1,12 +1,12 @@
 "use client"
+import { SearchField } from "@/features"
+import { Heading } from "@/shared/ui/Heading"
 import dynamic from "next/dynamic"
 
 import { ProjectStatisticsChart } from "@/app/dashboard/project-chart/ProjectStatisticsChart"
 import { ProjectStats } from "@/app/dashboard/project-stats/ProjectStats"
 
-import { Heading } from "@/components/ui/Heading"
-import { LastTasks } from "@/components/ui/Tasks/LastTasks"
-import { SearchField } from "@/components/ui/filters/SearchField"
+import { LastTasks } from "@/entities/task/ui/LastTasks"
 
 const DynamicThemeToggle = dynamic(
 	() =>

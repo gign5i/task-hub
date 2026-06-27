@@ -1,10 +1,9 @@
 import "./globals.css"
+import { cn } from "@/shared/lib/helpers/utils"
 import type { Metadata } from "next"
 import { Geist, Poppins } from "next/font/google"
 
 import Providers from "@/app/Providers"
-
-import { cn } from "@/utils/lib/utils"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 

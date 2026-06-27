@@ -1,4 +1,11 @@
-import type {IProject} from "@/types/project.types";
+import type { IProject } from "../model/interfaces/project.interface"
+
+
+
+
+
+
+
 
 export const PROJECTS: IProject[] = [
   {

@@ -1,26 +1,28 @@
 "use client"
+import type { ITask } from "@/shared"
+import { Pages } from "@/shared"
+import { AddSubTask } from "@/widgets"
 import {
 	Image as ImageIcon,
 	Link as LinkIcon,
 	MessageSquareMore,
-	Pencil,
-	PlusIcon
+	Pencil
 } from "lucide-react"
+import { observer } from "mobx-react-lite"
 import Image from "next/image"
 import Link from "next/link"
 
+import { ICON_MAP } from "@/app/dashboard/@modals/(.)task/[id]/edit/task-icons.data"
+
 import { ProgressBar } from "@/components/ui/ProgressBar"
 
-import type { ITask } from "@/types/task.types"
-
-import { Pages } from "@/config/pages"
-
-export function TaskPreview({ task }: { task: ITask }) {
+export const TaskPreview = observer(({ task }: { task: ITask }) => {
 	const CompletedTasks = task.subTasks.filter(
 		element => element.isCompleted
 	).length
 	const TotalTasks = task.subTasks.length
 	const Progress = Math.round((CompletedTasks / TotalTasks) * 100)
+	const TaskIconName = ICON_MAP[task.icon]
 	return (
 		<div className={"bg-card w-full rounded-2xl p-5"}>
 			<div className={"flex flex-col items-center justify-center gap-3"}>
@@ -30,7 +32,7 @@ export function TaskPreview({ task }: { task: ITask }) {
 							"bg-primary/30 text-primary flex items-center justify-center rounded-full object-cover p-1.5"
 						}
 					>
-						<task.icon />
+						<TaskIconName />
 					</div>
 					<div className={"flex flex-col"}>
 						<span className={"text-m w-28 font-normal opacity-85"}>
@@ -89,13 +91,14 @@ export function TaskPreview({ task }: { task: ITask }) {
 						</div>
 					</div>
 					<div className={"flex items-center gap-2"}>
-						<button
+						{/* <button
 							className={
 								'bg-primary border-primary dark:text-white" hover:border-primary hover:bg-primary/80 items-center rounded-full border p-1 text-white transition-colors'
 							}
 						>
 							<PlusIcon size={18} />
-						</button>
+						</button> */}
+						<AddSubTask id={task.id} />
 						<Link
 							href={Pages.TASK_EDIT(task.id)}
 							className={
@@ -109,4 +112,4 @@ export function TaskPreview({ task }: { task: ITask }) {
 			</div>
 		</div>
 	)
-}
+})

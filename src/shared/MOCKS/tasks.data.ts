@@ -1,12 +1,10 @@
-import { PROFILES } from "@/MOCKS/profile.data"
-import { Plane } from "lucide-react"
-
-import type { ITask } from "@/types/task.types"
+import type { ITask } from "../model/interfaces/task.types"
+import { PROFILES } from "@shared/MOCKS/profiles.data"
 
 export const TASKS: Array<ITask> = [
 	{
 		id: "1",
-		icon: Plane,
+		icon: "ShoppingBasket",
 		title: "Travel app user flow",
 		deuDate: new Date(new Date().getTime() + 3 * 24 * 24 * 60 * 60 * 1000),
 		comments: ["comment 1", "comment 2", "comment 3", "comment 4"],
@@ -38,7 +36,7 @@ export const TASKS: Array<ITask> = [
 	},
 	{
 		id: "2",
-		icon: Plane,
+		icon: "Plane",
 		title: "Ecommerce app user flow",
 		deuDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000),
 		comments: ["comment 1", "comment 2", "comment 3"],
@@ -55,7 +53,7 @@ export const TASKS: Array<ITask> = [
 	},
 	{
 		id: "3",
-		icon: Plane,
+		icon: "Briefcase",
 		title: "Smartphone app user flow",
 		deuDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
 		comments: ["comment 1", "comment 2", "comment 3"],

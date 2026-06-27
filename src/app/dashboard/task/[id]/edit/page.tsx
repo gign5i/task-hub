@@ -1,6 +1,5 @@
+import { Pages } from "@/shared"
 import Link from "next/link"
-
-import { Pages } from "@/config/pages"
 
 export default async function TaskEditPage({
 	params

@@ -1,4 +1,10 @@
-import type {IProfile} from "@/types/profile.types";
+import type { IProfile } from "../model/interfaces/profile.interface";
+
+
+
+
+
+
 
 export const PROFILE: IProfile = {
   id: '1',

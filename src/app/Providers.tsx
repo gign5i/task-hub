@@ -1,15 +1,20 @@
-"use client";
-import type {PropsWithChildren} from "react";
-import {ViewTransition} from "react";
-import {ThemeProvider} from "next-themes";
-import { Toaster } from "sonner";
+"use client"
+import { ThemeProvider } from "next-themes"
+import type { PropsWithChildren } from "react"
+import { ViewTransition } from "react"
+import { Toaster } from "sonner"
 
 export default function Providers({ children }: PropsWithChildren) {
-  return (
-    <ThemeProvider attribute={"class"} defaultTheme={"system"} enableSystem>
-      <ViewTransition>{children}
-        <Toaster />
-      </ViewTransition>
-    </ThemeProvider>
-  );
+	return (
+		<ThemeProvider
+			attribute={"class"}
+			defaultTheme={"system"}
+			enableSystem
+		>
+			<ViewTransition>
+				{children}
+				<Toaster />
+			</ViewTransition>
+		</ThemeProvider>
+	)
 }

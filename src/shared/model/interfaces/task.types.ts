@@ -1,6 +1,6 @@
-import type { LucideIcon } from "lucide-react"
+import type { IProfile } from "./profile.interface"
 
-import type { IProfile } from "@/types/profile.types"
+import type { TIconName } from "@/app/dashboard/@modals/(.)task/[id]/edit/task-icons.data"
 
 export interface ISubTask {
 	id: string
@@ -9,7 +9,8 @@ export interface ISubTask {
 }
 
 export interface ITask extends Omit<ISubTask, "isCompleted"> {
-	icon: LucideIcon
+	// icon: LucideIcon
+	icon: TIconName
 	deuDate: Date
 	users: Array<IProfile>
 	subTasks: Array<ISubTask>
@@ -17,8 +18,6 @@ export interface ITask extends Omit<ISubTask, "isCompleted"> {
 	resources: Array<string>
 	links: Array<string>
 }
-
-export type TTaskType = "all" | "not-started" | "in-progress" | "completed"
 
 export type TSubTaskFormData = Pick<ISubTask, "title">
 

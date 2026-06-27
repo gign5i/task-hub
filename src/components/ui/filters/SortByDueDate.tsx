@@ -1,5 +1,5 @@
-import type { Dispatch, SetStateAction } from "react"
-
+import { type TSortType, useTask } from "@/shared"
+import { taskStore } from "@/shared/lib/stores/task.store"
 import {
 	Select,
 	SelectContent,
@@ -8,24 +8,19 @@ import {
 	SelectLabel,
 	SelectTrigger,
 	SelectValue
-} from "@/components/ui/select"
-
-import type { TSortType } from "@/types/task.types"
+} from "@/shared/ui/select"
+import { observer } from "mobx-react-lite"
 
 const options: Array<TSortType> = ["asc", "desc"]
 
-export function SortByDueDate({
-	sortByDueDate,
-	setSortByDueDate
-}: {
-	sortByDueDate: TSortType
-	setSortByDueDate: Dispatch<SetStateAction<TSortType>>
-}) {
+export const SortByDueDate = observer(() => {
+	const { sortByDueDate, setSortByDueDate } = useTask()
+
 	return (
 		<div>
 			<Select
 				value={sortByDueDate}
-				onValueChange={value => setSortByDueDate(value || "asc")}
+				onValueChange={value => setSortByDueDate(!!value ? value : "asc")}
 			>
 				<SelectTrigger className="w-full max-w-48 bg-white">
 					<SelectValue placeholder="Sort by due date" />
@@ -46,4 +41,4 @@ export function SortByDueDate({
 			</Select>
 		</div>
 	)
-}
+})
