@@ -1,10 +1,10 @@
 "use client"
 
 import { TaskEditor } from "@/widgets"
-import { useRouter } from "next/navigation"
+import { useTransitionRouter } from "next-view-transitions"
 
 export const TaskEditModalClient = ({ id }: { id: string }) => {
-	const router = useRouter()
+	const router = useTransitionRouter()
 
 	const handleGetBack = () => router.back()
 

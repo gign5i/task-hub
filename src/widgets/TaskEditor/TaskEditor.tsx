@@ -10,7 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { format } from "date-fns/format"
 import { Calendar as CalendarIcon } from "lucide-react"
 import { observer } from "mobx-react-lite"
-import { useRouter } from "next/navigation"
+import { useTransitionRouter } from "next-view-transitions"
 import { useEffect } from "react"
 import { Controller, useForm } from "react-hook-form"
 import { toast } from "sonner"
@@ -21,7 +21,7 @@ import {
 } from "@/app/dashboard/@modals/(.)task/[id]/edit/task-icons.data"
 
 export const TaskEditor = observer(({ id }: { id: string }) => {
-	const { back } = useRouter()
+	const { back } = useTransitionRouter()
 	const { getTaskById, updateTask } = useTask()
 	const methods = useForm<TTaskEditorSchema>({
 		defaultValues: {

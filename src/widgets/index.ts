@@ -1,6 +1,7 @@
 import { TaskEditor } from "./TaskEditor/TaskEditor";
 import {AddSubTask} from './AddSubtask/AddSubtask';
 import { TaskTimeLine } from "./TaskTimeLine/TaskTimeLine";
+import { Login } from './AuthForm/ui/Login';
 
 
 
@@ -8,4 +9,4 @@ import { TaskTimeLine } from "./TaskTimeLine/TaskTimeLine";
 
 
 
-export { TaskEditor, AddSubTask, TaskTimeLine };
+export { TaskEditor, AddSubTask, TaskTimeLine, Login };

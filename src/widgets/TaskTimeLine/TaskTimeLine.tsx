@@ -1,3 +1,5 @@
+"use client"
+
 import { TaskPreview } from "@/entities/task/ui/TaskPreview"
 import { useTask } from "@/shared"
 import { getHours, getMinutes } from "date-fns"
