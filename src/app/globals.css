@@ -150,6 +150,7 @@ html {
 html,
 body {
 	font-family: var(--font-poppins-sans), sans-serif;
+	height: 100%;
 }
 
 body {

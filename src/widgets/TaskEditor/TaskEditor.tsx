@@ -45,7 +45,7 @@ export const TaskEditor = observer(({ id }: { id: string }) => {
 		if (!task) return
 
 		reset({
-			deuDate: task.deuDate,
+			deuDate: task.deuDate.date,
 			title: task.title,
 			icon: task.icon
 		})

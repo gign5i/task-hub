@@ -11,7 +11,11 @@ export interface ISubTask {
 export interface ITask extends Omit<ISubTask, "isCompleted"> {
 	// icon: LucideIcon
 	icon: TIconName
-	deuDate: Date
+	deuDate: {
+		date: Date,
+		startTime?: Date,
+		endTime?: Date
+	}
 	users: Array<IProfile>
 	subTasks: Array<ISubTask>
 	comments: Array<string>

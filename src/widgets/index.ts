@@ -1,5 +1,6 @@
 import { TaskEditor } from "./TaskEditor/TaskEditor";
 import {AddSubTask} from './AddSubtask/AddSubtask';
+import { TaskTimeLine } from "./TaskTimeLine/TaskTimeLine";
 
 
 
@@ -7,4 +8,4 @@ import {AddSubTask} from './AddSubtask/AddSubtask';
 
 
 
-export { TaskEditor, AddSubTask };
+export { TaskEditor, AddSubTask, TaskTimeLine };

@@ -1,12 +1,17 @@
 import type { ITask } from "../model/interfaces/task.types"
 import { PROFILES } from "@shared/MOCKS/profiles.data"
+import { setHours, setMinutes } from "date-fns"
 
 export const TASKS: Array<ITask> = [
 	{
 		id: "1",
 		icon: "ShoppingBasket",
 		title: "Travel app user flow",
-		deuDate: new Date(new Date().getTime() + 3 * 24 * 24 * 60 * 60 * 1000),
+		deuDate: {
+			date: new Date(),
+			startTime: setMinutes(setHours(new Date(), 9), 50),
+			endTime: setMinutes(setHours(new Date(), 12), 10)
+		},
 		comments: ["comment 1", "comment 2", "comment 3", "comment 4"],
 		resources: ["", "", "", "", "", ""],
 		links: ["https://example.com", "https://example.org"],
@@ -38,7 +43,11 @@ export const TASKS: Array<ITask> = [
 		id: "2",
 		icon: "Plane",
 		title: "Ecommerce app user flow",
-		deuDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000),
+		deuDate: {
+			date: new Date(),
+			startTime: setMinutes(setHours(new Date(), 13), 0),
+			endTime: setMinutes(setHours(new Date(), 15), 30)
+		},
 		comments: ["comment 1", "comment 2", "comment 3"],
 		resources: ["", "", "", ""],
 		links: ["https://example.com", "https://example.org"],
@@ -55,7 +64,9 @@ export const TASKS: Array<ITask> = [
 		id: "3",
 		icon: "Briefcase",
 		title: "Smartphone app user flow",
-		deuDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
+		deuDate: {
+			date: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000)
+		},
 		comments: ["comment 1", "comment 2", "comment 3"],
 		resources: ["", "", "", "", ""],
 		links: ["https://example.com"],

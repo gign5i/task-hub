@@ -12,6 +12,7 @@ export const useTask = () => {
   const setTaskStatus = (status: TTaskType | null) => taskStore.setStatus(status)
   const setSortByDueDate = (sortType: TSortType) => taskStore.setSortByDueDate(sortType)
   const sortedTasks = taskStore.sortedTask
+  const todayTasks = taskStore.todayTasks
   
-  return {status, sortByDueDate, sortedTasks, getTaskById, updateTask, addSubTask, setTaskStatus, setSortByDueDate};
+  return {status, sortByDueDate, sortedTasks, todayTasks, getTaskById, updateTask, addSubTask, setTaskStatus, setSortByDueDate};
 };

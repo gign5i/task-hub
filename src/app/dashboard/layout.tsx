@@ -10,7 +10,7 @@ export default function DashboardLayout({
 	modals: ReactNode
 }) {
 	return (
-		<div className={"grid h-screen grid-cols-[230px_1fr]"}>
+		<div className={"grid min-h-screen grid-cols-[230px_1fr]"}>
 			<Sidebar />
 			<main className={"p-5"}>{children}</main>
 			{modals}

@@ -2,6 +2,7 @@
 import type { ITask } from "@/shared"
 import { Pages } from "@/shared"
 import { AddSubTask } from "@/widgets"
+import { isToday } from "date-fns"
 import {
 	Image as ImageIcon,
 	Link as LinkIcon,
@@ -11,6 +12,7 @@ import {
 import { observer } from "mobx-react-lite"
 import Image from "next/image"
 import Link from "next/link"
+import { useMemo } from "react"
 
 import { ICON_MAP } from "@/app/dashboard/@modals/(.)task/[id]/edit/task-icons.data"
 
@@ -23,6 +25,13 @@ export const TaskPreview = observer(({ task }: { task: ITask }) => {
 	const TotalTasks = task.subTasks.length
 	const Progress = Math.round((CompletedTasks / TotalTasks) * 100)
 	const TaskIconName = ICON_MAP[task.icon]
+
+	const dueDate = useMemo(() => {
+		if (isToday(task.deuDate.date)) return "Today"
+
+		return `${Math.ceil((+task.deuDate.date - Date.now()) / (1000 * 60 * 60 * 24))} days`
+	}, [task])
+
 	return (
 		<div className={"bg-card w-full rounded-2xl p-5"}>
 			<div className={"flex flex-col items-center justify-center gap-3"}>
@@ -39,7 +48,7 @@ export const TaskPreview = observer(({ task }: { task: ITask }) => {
 							{task.title}
 						</span>
 						<div className={"text-sm text-neutral-600 opacity-50"}>
-							Due: 2 days
+							Due: {dueDate}
 						</div>
 					</div>
 					<div className={"flex items-center justify-center -space-x-3"}>
@@ -91,13 +100,6 @@ export const TaskPreview = observer(({ task }: { task: ITask }) => {
 						</div>
 					</div>
 					<div className={"flex items-center gap-2"}>
-						{/* <button
-							className={
-								'bg-primary border-primary dark:text-white" hover:border-primary hover:bg-primary/80 items-center rounded-full border p-1 text-white transition-colors'
-							}
-						>
-							<PlusIcon size={18} />
-						</button> */}
 						<AddSubTask id={task.id} />
 						<Link
 							href={Pages.TASK_EDIT(task.id)}

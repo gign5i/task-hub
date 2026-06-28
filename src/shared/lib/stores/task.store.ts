@@ -7,6 +7,7 @@ import type {
 } from "../../model/interfaces/task.types"
 import type { TTaskType } from "../../model/types/taskType.type"
 import { makeAutoObservable } from "mobx"
+import { isToday } from "date-fns";
 
 class TaskStore {
 	tasks: Array<ITask> = TASKS;
@@ -22,6 +23,12 @@ class TaskStore {
 		makeAutoObservable(this)
 	}
 
+	get todayTasks(): ITask[] {
+		return this.tasks.filter(task => {
+			const taskDate = new Date(task.deuDate.date);
+			return isToday(taskDate) && task.deuDate.endTime && task.deuDate.startTime;
+		})
+	}
 	get sortedTask() {
 		let filtered = this.tasks
 
@@ -43,8 +50,8 @@ class TaskStore {
 		}
 
 		return filtered.slice().sort((a, b) => {
-			const dateA = new Date(a.deuDate).getDate()
-			const dateB = new Date(b.deuDate).getDate()
+			const dateA = new Date(a.deuDate.date).getDate()
+			const dateB = new Date(b.deuDate.date).getDate()
 
 			if (this.sortByDueDate === "asc") {
 				return dateA - dateB
@@ -61,10 +68,15 @@ class TaskStore {
 	}
 
 	updateTask(id: string, updatedTask: TTaskEditorSchema): void {
-		const taskIndex = this.tasks.findIndex(task => task.id === id)
-		if (taskIndex === -1) return
+		const task = this.tasks.find(task => task.id === id)
+		if (!task) return
 
-		this.tasks[taskIndex] = { ...this.tasks[taskIndex], ...updatedTask }
+		task.deuDate = {
+			...task.deuDate,
+			date: updatedTask.deuDate
+		}
+		task.title = updatedTask.title
+		task.icon = updatedTask.icon
 	}
 
 	addSubTask(id: string, subTask: TSubTaskFormData) {

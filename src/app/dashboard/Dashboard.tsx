@@ -1,12 +1,12 @@
 "use client"
+import { LastTasks } from "@/entities/task/ui/LastTasks"
 import { SearchField } from "@/features"
 import { Heading } from "@/shared/ui/Heading"
+import { TaskTimeLine } from "@/widgets"
 import dynamic from "next/dynamic"
 
 import { ProjectStatisticsChart } from "@/app/dashboard/project-chart/ProjectStatisticsChart"
 import { ProjectStats } from "@/app/dashboard/project-stats/ProjectStats"
-
-import { LastTasks } from "@/entities/task/ui/LastTasks"
 
 const DynamicThemeToggle = dynamic(
 	() =>
@@ -37,6 +37,7 @@ export function Dashboard() {
 					<ProjectStatisticsChart />
 				</div>
 				<LastTasks />
+				<TaskTimeLine />
 			</div>
 			<div
 				className={
