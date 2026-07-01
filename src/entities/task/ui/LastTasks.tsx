@@ -1,10 +1,8 @@
 "use client"
-import { TaskPreview } from "@/entities/task/ui/TaskPreview"
+import { TaskPreview } from "./TaskPreview"
+import { FilterByStatus, SortByDueDate } from "@/features/filters"
 import { type ITask, useTask } from "@/shared"
 import { observer } from "mobx-react-lite"
-
-import { FilterByStatus } from "@/components/ui/filters/FilterByStatus"
-import { SortByDueDate } from "@/components/ui/filters/SortByDueDate"
 
 export const LastTasks = observer(() => {
 	const { sortedTasks } = useTask()

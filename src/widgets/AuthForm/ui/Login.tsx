@@ -1,15 +1,21 @@
 "use client"
 
 import { type TLoginSchema, loginSchema } from "../model/loginSchema"
+import { useAuth } from "@/shared"
+import { authStore } from "@/shared/lib/stores/auth.store"
 import { Button } from "@/shared/ui/button"
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/shared/ui/field"
 import { Input } from "@/shared/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { observer } from "mobx-react-lite"
 import { useTransitionRouter } from "next-view-transitions"
+import { useEffect } from "react"
 import { Controller, useForm } from "react-hook-form"
 import { toast } from "sonner"
 
-export const Login = () => {
+export const Login = observer(() => {
+	const { login } = useAuth()
+
 	const router = useTransitionRouter()
 	const methods = useForm<TLoginSchema>({
 		resolver: zodResolver(loginSchema),
@@ -19,13 +25,26 @@ export const Login = () => {
 		}
 	})
 
-	const { handleSubmit, control } = methods
+	const {
+		handleSubmit,
+		control,
+		formState: { errors }
+	} = methods
 
 	const onSubmit = (data: TLoginSchema) => {
-		console.log(data)
-		toast.success("login succesfuly")
-		router.replace("/dashboard")
+		login()
+
+		if (authStore.isLoggedIn) {
+			toast.success("login succesfuly")
+			router.replace("/dashboard")
+		}
 	}
+
+	useEffect(() => {
+		if (!!errors.login || errors.login) {
+			toast.error("Something went wrong, please try again")
+		}
+	}, [errors.login, errors.password])
 
 	return (
 		<div className="mx-4 max-h-[90vh] w-full max-w-sm overflow-y-auto rounded-lg bg-white p-6 dark:bg-neutral-800">
@@ -79,4 +98,4 @@ export const Login = () => {
 			</form>
 		</div>
 	)
-}
+})

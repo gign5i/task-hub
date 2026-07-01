@@ -1,6 +1,6 @@
 "use client"
 
-import { TaskEditor } from "@/widgets"
+import { TaskEditor } from "@/widgets/TaskEditor"
 import { useTransitionRouter } from "next-view-transitions"
 
 export const TaskEditModalClient = ({ id }: { id: string }) => {

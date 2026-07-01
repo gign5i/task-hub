@@ -1,4 +1,4 @@
-import { LoginScreen } from "@/screens"
+import { LoginScreen } from "@/screens/LoginScreen"
 
 export const metadata = {
 	title: "Login",

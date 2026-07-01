@@ -1,4 +1,4 @@
-import { Login } from "@/widgets"
+import { Login } from "@/widgets/AuthForm"
 
 export const LoginScreen = () => {
 	return (

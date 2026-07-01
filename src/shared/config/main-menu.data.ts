@@ -1,4 +1,4 @@
-import { Pages } from "../config/pages";
+import { DashboardPages } from "./dashboard-pages";
 import type { IMenuItem } from "../model/interfaces/menu.interface";
 import {
 	CalendarDays,
@@ -14,36 +14,36 @@ export const MAIN_MENU: IMenuItem[] = [
 	{
 		label: "Dashboard",
 		icon: LayoutGrid,
-		href: Pages.DASHBOARD
+		href: DashboardPages.DASHBOARD
 	},
 	{
 		label: "Messages",
 		icon: MessageCircleMore,
-		href: Pages.MESSAGES
+		href: DashboardPages.MESSAGES
 	},
 	{
 		label: "Insight",
 		icon: ChartNoAxesColumn,
-		href: Pages.INSIGHT
+		href: DashboardPages.INSIGHT
 	},
 	{
 		label: "Team",
 		icon: UsersRound,
-		href: Pages.TEAM
+		href: DashboardPages.TEAM
 	},
 	{
 		label: "Schedule",
 		icon: CalendarDays,
-		href: Pages.SCHEDULE
+		href: DashboardPages.SCHEDULE
 	},
 	{
 		label: "Report",
 		icon: Notebook,
-		href: Pages.REPORT
+		href: DashboardPages.REPORT
 	},
 	{
 		label: "Settings",
 		icon: Settings,
-		href: Pages.SETTINGS
+		href: DashboardPages.SETTINGS
 	}
 ]

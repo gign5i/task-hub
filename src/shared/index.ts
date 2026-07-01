@@ -1,5 +1,4 @@
 import { MAIN_MENU } from "./config/main-menu.data"
-import { Pages } from "./config/pages"
 import { StatusConfig } from "./config/select-options.config"
 import { formatMinutes } from "./lib/helpers/format-minutes"
 import type { IMenuItem } from "./model/interfaces/menu.interface"
@@ -14,10 +13,12 @@ import type {
 } from "./model/interfaces/task.types"
 import type { TTaskType } from "./model/types/taskType.type"
 import {useTask} from './lib/hooks/useTask'
+import { useAuth } from './lib/hooks/useAuth';
 import { TaskEditorSchema, type TTaskEditorSchema } from "./model/schemas/taskEditor.schema";
+import { ThemeToggle } from "./ui/ThemeToggle";
+
 export {
 	MAIN_MENU,
-	Pages,
 	StatusConfig,
 	TaskEditorSchema,
 	type TTaskEditorSchema,
@@ -31,5 +32,7 @@ export {
 	type IProjectStat,
 	type IMenuItem,
 	useTask,
-	formatMinutes
+	useAuth,
+	formatMinutes,
+	ThemeToggle
 }

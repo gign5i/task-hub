@@ -1,6 +1,7 @@
 import "./globals.css"
 import { cn } from "@/shared/lib/helpers/utils"
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 import { Geist, Poppins } from "next/font/google"
 
 import Providers from "@/app/Providers"

@@ -9,8 +9,7 @@ export function ProjectStatCard({ projectStat }: Props) {
 	return (
 		<div
 			className={clsx(
-				projectStat.bgColor,
-				"relative h-full items-center overflow-hidden rounded-2xl p-5 shadow-md"
+				`dark:bg-neutu-800 relative h-full items-center overflow-hidden rounded-2xl p-5 shadow-md ${projectStat.bgColor}`
 			)}
 		>
 			<div className={"relative z-10 flex items-center justify-between"}>

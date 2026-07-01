@@ -6,21 +6,21 @@ export const PROJECT_STATS_DATA: IProjectStat[] = [
 		id: 1,
 		number: 92,
 		label: "Active Projects",
-		bgColor: "bg-violet-200",
+		bgColor: "bg-violet-200 dark:bg-neutral-800",
 		icon: MonitorDotIcon
 	},
 	{
 		id: 2,
 		number: 92,
 		label: "On Going Projects",
-		bgColor: "bg-amber-300",
+		bgColor: "bg-amber-300 dark:bg-neutral-800",
 		icon: LaptopIcon
 	},
 	{
 		id: 3,
 		number: 1149,
 		label: "Working Hours",
-		bgColor: "bg-blue-200",
+		bgColor: "bg-blue-200 dark:bg-neutral-800",
 		icon: WatchIcon
 	}
 ]

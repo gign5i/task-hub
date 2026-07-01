@@ -1,22 +1,11 @@
 "use client"
-import { LastTasks } from "@/entities/task/ui/LastTasks"
-import { SearchField } from "@/features"
+import { LastTasks } from "@/entities/task"
+import { SearchField } from "@/features/SearchField"
 import { Heading } from "@/shared/ui/Heading"
-import { TaskTimeLine } from "@/widgets"
-import dynamic from "next/dynamic"
+import { TaskTimeLine } from "@/widgets/TaskTimeLine"
 
 import { ProjectStatisticsChart } from "@/app/dashboard/project-chart/ProjectStatisticsChart"
 import { ProjectStats } from "@/app/dashboard/project-stats/ProjectStats"
-
-const DynamicThemeToggle = dynamic(
-	() =>
-		import("@/components/layout/sidebar/ThemeToggle").then(
-			mod => mod.ThemeToggle
-		),
-	{
-		ssr: false
-	}
-)
 
 export function Dashboard() {
 	return (
@@ -29,7 +18,6 @@ export function Dashboard() {
 							value={""}
 							onChange={() => {}}
 						/>
-						<DynamicThemeToggle />
 					</div>
 				</div>
 				<div className={"grid grid-cols-[25%_75%] gap-6"}>

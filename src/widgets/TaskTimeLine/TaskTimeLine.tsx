@@ -1,6 +1,6 @@
 "use client"
 
-import { TaskPreview } from "@/entities/task/ui/TaskPreview"
+import { TaskPreview } from "@/entities/task"
 import { useTask } from "@/shared"
 import { getHours, getMinutes } from "date-fns"
 import { observer } from "mobx-react-lite"
@@ -62,7 +62,10 @@ export const TaskTimeLine = observer(() => {
 									width: `${endPercent - startPercent}%`
 								}}
 							>
-								<TaskPreview task={task} />
+								<TaskPreview
+									task={task}
+									minimize
+								/>
 							</div>
 						)
 					})}
